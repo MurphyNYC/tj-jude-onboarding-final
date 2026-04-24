@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f3ef;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-border-top: rgba(255, 255, 255, 0.85);
+  --text-primary: #1c1c1e;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #a1a1a6;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --success: #34c759;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", Segoe UI, sans-serif;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: #1c1c1e;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Premium dark button for light glass */
+.btn-premium {
+  background: linear-gradient(135deg, #1c1c1e 0%, #2d2d30 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn-premium:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-premium:active {
+  transform: scale(0.97);
+}
+
+.btn-premium:disabled {
+  opacity: 0.4;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* Option cards on glass */
+.option-glass {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 16px 18px;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  text-align: left;
+}
+
+.option-glass:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.option-glass-selected {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.option-glass-selected:hover {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Text input on glass */
+.input-glass {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 16px 18px;
+  color: #1c1c1e;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  width: 100%;
+  outline: none;
+  resize: none;
+}
+
+.input-glass::placeholder {
+  color: #a1a1a6;
+}
+
+.input-glass:focus {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+/* Toggle on light glass */
+.toggle-glass-track {
+  width: 52px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  position: relative;
+  transition: background 0.25s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.toggle-glass-track-active {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+
+.toggle-glass-knob {
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-glass-track-active .toggle-glass-knob {
+  transform: translateX(20px);
+}
+
+/* Progress pip */
+.pip {
+  height: 6px;
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pip-active {
+  background: #1c1c1e;
+  width: 24px;
+}
+
+.pip-inactive {
+  background: rgba(0, 0, 0, 0.08);
+  width: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
