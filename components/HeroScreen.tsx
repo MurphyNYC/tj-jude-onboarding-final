@@ -8,6 +8,10 @@ interface HeroScreenProps {
 
 export function HeroScreen({ onStart }: HeroScreenProps) {
   return (
+    <div className="flex flex-col items-center text-center py-8">
+      <motion.div
+        className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/65 px-4 py-1.5 shadow-sm backdrop-blur-xl"
+        initial={{ opacity: 0, scale: 0.95 }}
     <div className="flex flex-col items-center text-center py-8 sm:py-10">
       <motion.div
         className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-[12px] font-medium text-[#6e6e73] shadow-sm"
@@ -16,6 +20,9 @@ export function HeroScreen({ onStart }: HeroScreenProps) {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <span className="h-2 w-2 rounded-full bg-emerald-500" />
+        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#6e6e73]">
+          Premium onboarding
+        </p>
         Premium onboarding experience
       </motion.div>
 
@@ -29,7 +36,7 @@ export function HeroScreen({ onStart }: HeroScreenProps) {
       </motion.h1>
 
       <motion.p
-        className="text-[17px] text-[#6e6e73] mb-1"
+        className="text-[17px] text-[#6e6e73] mb-1 max-w-[360px]"
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}

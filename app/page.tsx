@@ -110,6 +110,18 @@ export default function Home() {
   const handleComplete = async () => {
     setIsSubmitting(true);
     try {
+      const netlifyPayload = new URLSearchParams({
+        "form-name": "onboarding-lead",
+        sessionId: useOnboardingStore.getState().sessionId,
+        completedAt: new Date().toISOString(),
+        answers: JSON.stringify(answers),
+      }).toString();
+
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: netlifyPayload,
+      });
       const payload = {
         sessionId: useOnboardingStore.getState().sessionId,
         answers,
@@ -215,6 +227,22 @@ export default function Home() {
     <main className="fixed inset-0 overflow-hidden">
       <AmbientBackground />
 
+      <form
+        name="onboarding-lead"
+        data-netlify="true"
+        netlify-honeypot="company"
+        hidden
+      >
+        <input type="hidden" name="form-name" value="onboarding-lead" />
+        <input type="text" name="sessionId" />
+        <input type="text" name="completedAt" />
+        <textarea name="answers" />
+        <input type="text" name="company" />
+      </form>
+
+      {/* Centered card container */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center p-4 sm:p-6">
+        <GlassCard className="my-auto w-full max-w-xl max-h-[86vh] flex flex-col">
       <form name="premium-onboarding" data-netlify="true" netlify-honeypot="bot-field" hidden>
         <input type="text" name="sessionId" />
         <input type="text" name="completedAt" />
