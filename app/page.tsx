@@ -212,7 +212,7 @@ export default function Home() {
   const showPips = currentStep >= 1 && currentStep <= TOTAL_QUESTIONS;
 
   return (
-    <main className="fixed inset-0 overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
 
       <form name="premium-onboarding" data-netlify="true" netlify-honeypot="bot-field" hidden>
