@@ -200,12 +200,12 @@ export default function Home() {
   const showPips = currentStep >= 1 && currentStep <= TOTAL_QUESTIONS;
 
   return (
-    <main className="fixed inset-0 overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
 
       {/* Centered card container */}
-      <div className="absolute inset-0 z-10 grid place-items-center p-4 sm:p-6">
-        <GlassCard className="w-full max-w-xl max-h-[86vh] flex flex-col">
+      <div className="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-6">
+        <GlassCard className="w-full max-w-xl max-h-[86dvh] flex flex-col">
           {/* Progress pips */}
           {showPips && (
             <motion.div
