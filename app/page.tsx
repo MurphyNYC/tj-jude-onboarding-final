@@ -110,14 +110,16 @@ export default function Home() {
   const handleComplete = async () => {
     setIsSubmitting(true);
     try {
+      const payload = {
+        sessionId: useOnboardingStore.getState().sessionId,
+        answers,
+        completedAt: new Date().toISOString(),
+      };
+
       const response = await fetch("/api/completion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: useOnboardingStore.getState().sessionId,
-          answers,
-          completedAt: new Date().toISOString(),
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
@@ -202,8 +204,8 @@ export default function Home() {
       <AmbientBackground />
 
       {/* Centered card container */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center p-4 sm:p-6">
-        <GlassCard className="w-full max-w-lg max-h-[85vh] flex flex-col">
+      <div className="absolute inset-0 z-10 grid place-items-center p-4 sm:p-6">
+        <GlassCard className="w-full max-w-xl max-h-[86vh] flex flex-col">
           {/* Progress pips */}
           {showPips && (
             <motion.div
