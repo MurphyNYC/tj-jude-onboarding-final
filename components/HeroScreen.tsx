@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 interface HeroScreenProps {
   onStart: () => void;
@@ -9,30 +8,17 @@ interface HeroScreenProps {
 
 export function HeroScreen({ onStart }: HeroScreenProps) {
   return (
-    <div className="flex flex-col items-center text-center py-6">
-      {/* Photo */}
+    <div className="flex flex-col items-center text-center py-8">
       <motion.div
-        className="relative mb-8"
-        initial={{ opacity: 0, scale: 0.9 }}
+        className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/65 px-4 py-1.5 shadow-sm backdrop-blur-xl"
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="relative w-32 h-32 rounded-[24px] overflow-hidden ring-1 ring-black/5 shadow-lg">
-          <Image
-            src="/tj-photo.jpg"
-            alt="TJ Jude"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        {/* Soft orb glow behind photo */}
-        <div
-          className="absolute -inset-4 rounded-[32px] -z-10 opacity-50 blur-2xl"
-          style={{
-            background: "radial-gradient(circle, rgba(168,130,255,0.35) 0%, transparent 70%)",
-          }}
-        />
+        <span className="h-2 w-2 rounded-full bg-emerald-500" />
+        <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#6e6e73]">
+          Premium onboarding
+        </p>
       </motion.div>
 
       <motion.h1
@@ -45,7 +31,7 @@ export function HeroScreen({ onStart }: HeroScreenProps) {
       </motion.h1>
 
       <motion.p
-        className="text-[17px] text-[#6e6e73] mb-1"
+        className="text-[17px] text-[#6e6e73] mb-1 max-w-[360px]"
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
