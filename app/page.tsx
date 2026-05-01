@@ -122,6 +122,18 @@ export default function Home() {
         body: JSON.stringify(payload),
       });
 
+      // Netlify Forms capture fallback
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "premium-onboarding",
+          sessionId: payload.sessionId,
+          completedAt: payload.completedAt,
+          answers: JSON.stringify(payload.answers),
+        }).toString(),
+      });
+
       if (response.ok) {
         complete();
       } else {
@@ -203,9 +215,16 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
 
+      <form name="premium-onboarding" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="text" name="sessionId" />
+        <input type="text" name="completedAt" />
+        <textarea name="answers" />
+        <input type="text" name="bot-field" />
+      </form>
+
       {/* Centered card container */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-6">
-        <GlassCard className="w-full max-w-xl max-h-[86dvh] flex flex-col">
+      <div className="absolute inset-0 z-10 grid place-items-center p-4 sm:p-6">
+        <GlassCard className="w-full max-w-xl max-h-[86vh] flex flex-col">
           {/* Progress pips */}
           {showPips && (
             <motion.div
